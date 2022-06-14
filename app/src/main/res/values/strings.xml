@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Laboratorium App</string>
+
+
+    <string name="keterangan">Lakukan proses login atau buat akun, untuk lanjut mendaftar praktikum lab.</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="lab_hardware_dan_software">Lab Hardware dan Software</string>
+    <string name="buat_akun_baru">Buat akun baru</string>
+    <string name="login">Login</string>
+    <string name="log_in">Log In</string>
+    <string name="keterangan_login">Hay, login dengan menggunakan username dan password anda.</string>
+    <string name="username">Username</string>
+    <string name="passwrod">Passwrod</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="keterangan_register">Hay, registrasi dengan mengisi form di bawah.</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="register">Register</string>
+    <string name="nim">NIM</string>
+    <string name="kirim">Kirim</string>
+    <string name="nama_ortu">Nama Ortu</string>
+    <string name="pekerjaan_ortu">Pekerjaan Ortu</string>
+    <string name="alamat">Alamat</string>
+    <string name="alamat_ortu">Alamat Ortu</string>
+    <string name="detail">Detail</string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="update">Update</string>
+    <string name="phone">Phone</string>
+</resources>

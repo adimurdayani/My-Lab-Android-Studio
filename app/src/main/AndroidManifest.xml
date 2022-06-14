@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.akbar.laboratoriumapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/config_network"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LaboratoriumApp"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.nilai.hardware.detail.DetailNilaiActivity"></activity>
+        <activity android:name=".ui.mahasiswa.detail.DetailHardwareActivity" />
+        <activity android:name=".ui.mahasiswa.DataLabActivity" />
+        <activity android:name=".ui.nilai.NilaiActivity" />
+        <activity android:name=".ui.tentang.TentangActivity" />
+        <activity android:name=".ui.profil.detail.DetailProfilActivity" />
+        <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
+        <activity android:name=".ui.profil.edit.EditProfilActivity" />
+        <activity android:name=".ui.mahasiswa.software.SoftwareActivity" />
+        <activity android:name=".ui.mahasiswa.hardware.HardwareActivity" />
+        <activity android:name=".ui.mahasiswa.MahasiswaActivity" />
+        <activity android:name=".ui.auth.AuthActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

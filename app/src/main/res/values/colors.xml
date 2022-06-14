@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Primary Blue-->
+    <color name="blue_100">#c0caeb</color>
+    <color name="blue_200">#96a8de</color>
+    <color name="blue_300">#6a87d1</color>
+    <color name="blue_400">#446cc8</color>
+    <color name="blue_500">#0053bf</color>
+    <color name="blue_600">#004bb5</color>
+    <color name="blue_700">#0041a9</color>
+    <color name="blue_800">#00379d</color>
+    <color name="blue_900">#002589</color>
+
+    <!--    Primary Orange-->
+    <color name="orange_200">#e3c681</color>
+    <color name="orange_300">#d9b050</color>
+    <color name="orange_400">#d3a02e</color>
+    <color name="orange_500">#ce9214</color>
+    <color name="orange_600">#cb870d</color>
+    <color name="orange_700">#c57a05</color>
+    <color name="orange_800">#bf6c00</color>
+    <color name="orange_900">#b45700</color>
+
+    <!--    Primary Secondary -->
+    <color name="secondary_400">#2accd6</color>
+    <color name="secondary_500">#00c3d2</color>
+    <color name="secondary_600">#00b2bf</color>
+    <color name="secondary_700">#049da5</color>
+    <color name="secondary_800">#05898e</color>
+    <color name="secondary_900">#066564</color>
+
+    <!--    Primary Grey-->
+    <color name="grey_200">#eeeeee</color>
+    <color name="grey_300">#e0e0e0</color>
+    <color name="grey_400">#bdbdbd</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+
+    <!--   On Sacondary-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

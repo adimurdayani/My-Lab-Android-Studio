@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/navigation_jadwal"
+        android:icon="@drawable/ic_calendar"
+        android:title="Jadwal" />
+
+    <item
+        android:id="@+id/navigation_notifikasi"
+        android:icon="@drawable/ic_bell"
+        android:title="Notifikasi" />
+
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/ic_user"
+        android:title="Profil" />
+</menu>

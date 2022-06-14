@@ -1,0 +1,75 @@
+package com.akbar.laboratoriumapp.ui.beranda
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.akbar.laboratoriumapp.databinding.FragmentHomeBinding
+import com.akbar.laboratoriumapp.ui.mahasiswa.DataLabActivity
+import com.akbar.laboratoriumapp.ui.mahasiswa.MahasiswaActivity
+import com.akbar.laboratoriumapp.ui.nilai.NilaiActivity
+import com.akbar.laboratoriumapp.ui.pendaftaran.PendaftaranActivity
+import com.akbar.laboratoriumapp.util.SharedPref
+import es.dmoral.toasty.Toasty
+
+class FragmentHome : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var s: SharedPref
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        s = SharedPref(requireActivity())
+        setButton()
+        return root
+    }
+
+    private fun setButton() {
+        val user = s.getUser()!!
+        binding.apply {
+            btnSoftware.setOnClickListener {
+                val i = Intent(requireContext(), DataLabActivity::class.java)
+                startActivity(i)
+            }
+            btnDaftar.setOnClickListener {
+                val i = Intent(requireContext(), PendaftaranActivity::class.java)
+                startActivity(i)
+            }
+            btnNilai.setOnClickListener {
+                val i = Intent(requireContext(), NilaiActivity::class.java)
+                startActivity(i)
+            }
+            btnInformasi.setOnClickListener {
+                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+            }
+            btnSertifikat.setOnClickListener {
+                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+            }
+            btnNotifikasi.setOnClickListener {
+                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+            }
+            btnMahasiswa.setOnClickListener {
+                val i = Intent(requireContext(), MahasiswaActivity::class.java)
+                startActivity(i)
+            }
+            tvNama.text = user.nama
+        }
+    }
+
+    companion object {
+        fun newInstance(): FragmentHome {
+            val fragment = FragmentHome()
+            val args = Bundle()
+            fragment.arguments = args
+            return fragment
+        }
+    }
+}
