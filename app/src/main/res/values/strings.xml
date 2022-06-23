@@ -18,7 +18,6 @@
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="register">Register</string>
     <string name="nim">NIM</string>
-    <string name="kirim">Kirim</string>
     <string name="nama_ortu">Nama Ortu</string>
     <string name="pekerjaan_ortu">Pekerjaan Ortu</string>
     <string name="alamat">Alamat</string>
@@ -27,4 +26,6 @@
     <string name="edit_profil">Edit Profil</string>
     <string name="update">Update</string>
     <string name="phone">Phone</string>
+    <string name="lupa_password">Lupa password?</string>
+    <string name="kirim">Kirim</string>
 </resources>

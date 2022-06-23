@@ -54,9 +54,18 @@ class FragmentSoftware : Fragment() {
         _binding = FragmentSoftwareBinding.inflate(inflater, container, false)
         val root: View = binding.root
         s = SharedPref(requireActivity())
+        setDisplay();
         setButton()
         setSpinner()
         return root
+    }
+
+    fun setDisplay() {
+        val user = s.getUser()!!
+        binding.apply {
+            edNama.setText(user.nama)
+            edNim.setText(user.nim)
+        }
     }
 
     private fun setButton() {

@@ -99,6 +99,17 @@
             android:textSize="@dimen/_12ssp"
             tools:ignore="RtlSymmetry" />
 
+        <TextView
+            android:id="@+id/btn_lupa_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lupa_password"
+            android:textColor="@color/blue_700"
+            android:textSize="@dimen/_10ssp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"

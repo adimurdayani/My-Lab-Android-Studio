@@ -95,6 +95,24 @@ interface ApiService {
         @Field("provinsi") provinsi: String
     ): Call<ResponseModel>
 
+    @FormUrlEncoded
+    @POST("login/email_user")
+    fun getEmail(
+        @Field("email") email: String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("nilai_s")
+    fun getNIlaiSoftwareProfile(
+        @Field("nim") email: String
+    ): Call<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("nilai_h")
+    fun getNIlaiHardwareProfile(
+        @Field("nim") email: String
+    ): Call<ResponseModel>
+
     //
     @GET("pendaftaran_hardware")
     fun getListHardware(): Call<ResponseModel>
@@ -117,4 +135,6 @@ interface ApiService {
     @GET("mahasiswa")
     fun getlistmahasiswa(): Call<ResponseModel>
 
+    @GET("informasi")
+    fun getlisinformasi(): Call<ResponseModel>
 }

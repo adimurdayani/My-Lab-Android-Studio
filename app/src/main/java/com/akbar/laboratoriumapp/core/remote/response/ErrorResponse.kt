@@ -1,6 +1,7 @@
 package com.akbar.laboratoriumapp.core.remote.response
 
 import android.R
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -99,6 +100,23 @@ fun Fragment.showSuccess(pesan: String?) {
     Toasty.success(
         requireActivity(), pesan!!, Toast.LENGTH_SHORT, true
     ).show()
+}
+
+fun Activity.showSuccess(pesan: String?) {
+    Toasty.success(
+        this, pesan!!, Toast.LENGTH_SHORT, true
+    ).show()
+}
+
+fun Activity.showError(pesan: String?) {
+    Toasty.error(this, pesan!!, Toast.LENGTH_SHORT, true).show()
+}
+
+fun <T> Activity.pushAcitivty(activity: Class<T>) {
+    val i = Intent(this, activity)
+    i.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    startActivity(i)
 }
 
 fun Fragment.infoAlert() {

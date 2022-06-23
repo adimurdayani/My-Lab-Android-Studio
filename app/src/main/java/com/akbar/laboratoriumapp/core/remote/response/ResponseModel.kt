@@ -11,7 +11,9 @@ class ResponseModel {
     val nilai: ArrayList<Nilai> = ArrayList()
     val jadwal: ArrayList<Jadwal> = ArrayList()
     val mahasiswa: ArrayList<Mahasiswa> = ArrayList()
+    val informasi: ArrayList<Informasi> = ArrayList()
 
+    val data_register = User()
     var data = User()
     var pendaftaran = Pendaftaran()
 }

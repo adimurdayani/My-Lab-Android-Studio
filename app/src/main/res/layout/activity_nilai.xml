@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:textAlignment="center"
-                android:text="Daftar Nilai Mahasiswa"
+                android:text="Nilai"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp" />
         </RelativeLayout>

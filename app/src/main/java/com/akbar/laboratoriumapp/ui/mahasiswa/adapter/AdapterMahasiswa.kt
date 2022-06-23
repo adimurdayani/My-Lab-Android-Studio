@@ -37,7 +37,7 @@ class AdapterMahasiswa(val activity: Activity, private val data: ArrayList<Mahas
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tv_nama.text = data[position].nama
         holder.tv_nim.text = data[position].nim
-        holder.tv_angkatan.text = data[position].angkatan
+        holder.tv_angkatan.text = "Angkatan: " + data[position].angkatan
     }
 
     override fun getItemCount(): Int {

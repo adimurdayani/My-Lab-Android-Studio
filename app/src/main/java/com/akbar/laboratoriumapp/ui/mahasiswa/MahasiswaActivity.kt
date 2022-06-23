@@ -1,15 +1,18 @@
 package com.akbar.laboratoriumapp.ui.mahasiswa
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.akbar.laboratoriumapp.HomeActivity
 import com.akbar.laboratoriumapp.core.model.Mahasiswa
 import com.akbar.laboratoriumapp.core.model.Pendaftaran
 import com.akbar.laboratoriumapp.core.remote.network.ApiConfig
 import com.akbar.laboratoriumapp.core.remote.response.ResponseModel
+import com.akbar.laboratoriumapp.core.remote.response.pushAcitivty
 import com.akbar.laboratoriumapp.databinding.ActivityMahasiswaBinding
 import com.akbar.laboratoriumapp.ui.mahasiswa.adapter.AdapterHardware
 import com.akbar.laboratoriumapp.ui.mahasiswa.adapter.AdapterMahasiswa
@@ -28,6 +31,14 @@ class MahasiswaActivity : AppCompatActivity() {
         _binding = ActivityMahasiswaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setDisplay()
+        setButton()
+    }
+
+    private fun setButton() {
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 
     private fun setDisplay() {

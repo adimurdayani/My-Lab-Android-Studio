@@ -6,11 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.akbar.laboratoriumapp.R
+import com.akbar.laboratoriumapp.core.model.Informasi
 import com.akbar.laboratoriumapp.databinding.FragmentHomeBinding
+import com.akbar.laboratoriumapp.ui.auth.ui.utama.FragmentUtama
+import com.akbar.laboratoriumapp.ui.informasi.InformasiActivity
 import com.akbar.laboratoriumapp.ui.mahasiswa.DataLabActivity
 import com.akbar.laboratoriumapp.ui.mahasiswa.MahasiswaActivity
 import com.akbar.laboratoriumapp.ui.nilai.NilaiActivity
+import com.akbar.laboratoriumapp.ui.notifikasi.FragmentNotifikasi
 import com.akbar.laboratoriumapp.ui.pendaftaran.PendaftaranActivity
+import com.akbar.laboratoriumapp.ui.sertifikat.SertifikatActivity
 import com.akbar.laboratoriumapp.util.SharedPref
 import es.dmoral.toasty.Toasty
 
@@ -48,13 +54,17 @@ class FragmentHome : Fragment() {
                 startActivity(i)
             }
             btnInformasi.setOnClickListener {
-                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+                val i = Intent(requireContext(), InformasiActivity::class.java)
+                startActivity(i)
             }
             btnSertifikat.setOnClickListener {
-                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+                val i = Intent(requireContext(), SertifikatActivity::class.java)
+                startActivity(i)
             }
             btnNotifikasi.setOnClickListener {
-                Toasty.info(requireActivity(),"Dalam Proses Pengembangan!", Toasty.LENGTH_SHORT, true).show()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frm_home, FragmentNotifikasi())
+                transaction.commit()
             }
             btnMahasiswa.setOnClickListener {
                 val i = Intent(requireContext(), MahasiswaActivity::class.java)

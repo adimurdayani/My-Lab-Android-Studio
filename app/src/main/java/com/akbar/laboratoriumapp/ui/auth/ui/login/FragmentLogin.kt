@@ -11,6 +11,7 @@ import com.akbar.laboratoriumapp.R
 import com.akbar.laboratoriumapp.core.remote.network.ApiConfig
 import com.akbar.laboratoriumapp.core.remote.response.*
 import com.akbar.laboratoriumapp.databinding.FragmentLoginBinding
+import com.akbar.laboratoriumapp.ui.auth.ui.lupapassword.FragmentLupaPassword
 import com.akbar.laboratoriumapp.ui.auth.ui.register.FragmentRegister
 import com.akbar.laboratoriumapp.ui.auth.ui.utama.FragmentUtama
 import com.akbar.laboratoriumapp.util.SharedPref
@@ -52,6 +53,12 @@ class FragmentLogin : Fragment() {
             if (validasi()) {
                 login()
             }
+        }
+
+        binding.btnLupaPassword.setOnClickListener {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.frm_login, FragmentLupaPassword())
+            transaction.commit()
         }
     }
 
