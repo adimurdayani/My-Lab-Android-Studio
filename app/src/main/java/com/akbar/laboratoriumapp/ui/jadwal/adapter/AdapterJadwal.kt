@@ -25,6 +25,8 @@ class AdapterJadwal(val activity: Activity, private val data: ArrayList<Jadwal>)
         val tv_praktikum = view.findViewById<TextView>(R.id.tv_praktikum)
         val tv_tanggal = view.findViewById<TextView>(R.id.tv_tanggal)
         val tv_jam = view.findViewById<TextView>(R.id.tv_jam)
+        val tv_asisten = view.findViewById<TextView>(R.id.tv_asisten)
+        val tv_keterangan = view.findViewById<TextView>(R.id.tv_keterangan)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +41,8 @@ class AdapterJadwal(val activity: Activity, private val data: ArrayList<Jadwal>)
         holder.tv_praktikum.text = data[position].judul
         holder.tv_tanggal.text = data[position].tanggal
         holder.tv_jam.text = data[position].jam
+        holder.tv_asisten.text = data[position].nama_dosen
+        holder.tv_keterangan.text = data[position].keterangan
     }
 
     override fun getItemCount(): Int {

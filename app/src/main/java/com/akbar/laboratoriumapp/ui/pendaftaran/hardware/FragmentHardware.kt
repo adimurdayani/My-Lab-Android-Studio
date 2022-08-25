@@ -1,5 +1,9 @@
 package com.akbar.laboratoriumapp.ui.pendaftaran.hardware
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -8,11 +12,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.akbar.laboratoriumapp.HomeActivity
 import com.akbar.laboratoriumapp.R
 import com.akbar.laboratoriumapp.core.model.Alamat
 import com.akbar.laboratoriumapp.core.model.Lab
+import com.akbar.laboratoriumapp.core.model.Pendaftaran
 import com.akbar.laboratoriumapp.core.model.Praktikum
 import com.akbar.laboratoriumapp.core.remote.network.ApiConfig
 import com.akbar.laboratoriumapp.core.remote.network.ApiConfigAlamat
@@ -23,9 +31,16 @@ import com.akbar.laboratoriumapp.ui.auth.ui.register.FragmentRegister
 import com.akbar.laboratoriumapp.ui.auth.ui.utama.FragmentUtama
 import com.akbar.laboratoriumapp.util.ApiKey
 import com.akbar.laboratoriumapp.util.SharedPref
+import com.google.gson.Gson
+import com.squareup.picasso.Picasso
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class FragmentHardware : Fragment() {
 
@@ -36,14 +51,12 @@ class FragmentHardware : Fragment() {
     private var getProv = Alamat()
     private var getKota = Alamat()
     private var getPraktikum = Praktikum()
-    private var getLab = Lab()
     var setprovinsi = ""
     var setkota = ""
     var setKelamin = ""
     var setAgama = ""
     var setSemester = ""
     var setPraktikum: Int? = 0
-    var setLab: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,6 +89,7 @@ class FragmentHardware : Fragment() {
     }
 
     private fun simpan() {
+
         binding.apply {
             progreButton.visibility = View.VISIBLE
             tvKirim.visibility = View.GONE
@@ -85,7 +99,6 @@ class FragmentHardware : Fragment() {
                 setKelamin,
                 setAgama,
                 setPraktikum,
-                setLab,
                 setSemester,
                 edAlamat.text.toString(),
                 edNamaortu.text.toString(),
@@ -103,7 +116,10 @@ class FragmentHardware : Fragment() {
                         if (response.isSuccessful) {
                             progreButton.visibility = View.GONE
                             tvKirim.visibility = View.VISIBLE
-                            showSuccess("Data berhasil dikirim!")
+                            showSuccess("Pendaftaran hardware sukses!")
+                            val data = response.body()!!.pendaftaran
+                            val json = Gson().toJson(data, Pendaftaran::class.java)
+                            pushAcitivty(UploadGambarActivity::class.java)
                         } else {
                             progreButton.visibility = View.GONE
                             tvKirim.visibility = View.VISIBLE
@@ -260,7 +276,7 @@ class FragmentHardware : Fragment() {
                                     if (position != 0) getProv = listprovinsi[position - 1]
                                     val idprov = getProv.province_id
                                     setprovinsi = getProv.province
-                                    Log.d("Response", "Provinsi: " + setprovinsi)
+                                    Log.d("Response", "Provinsi: $setprovinsi")
                                     setKota(idprov)
                                 }
 
@@ -396,63 +412,6 @@ class FragmentHardware : Fragment() {
         }
     }
 
-    private fun setLab() {
-        binding.apply {
-            progresBar2.visibility = View.VISIBLE
-            ApiConfig.instanceRetrofit.getLab().enqueue(object :
-                Callback<ResponseModel> {
-                override fun onResponse(
-                    call: Call<ResponseModel>,
-                    response: Response<ResponseModel>
-                ) {
-                    if (response.isSuccessful) {
-                        progresBar2.visibility = View.GONE
-
-                        val res = response.body()!!
-
-                        val arrayString = ArrayList<String>()
-                        val listlab = res.kategori_register
-                        arrayString.add("Pilih Laboratorium")
-                        for (lab in listlab) {
-                            divLab.visibility = View.VISIBLE
-                            arrayString.add(lab.kategori)
-                        }
-
-                        val adapter = ArrayAdapter<Any>(
-                            requireActivity(), R.layout.item_spinner, arrayString.toTypedArray()
-                        )
-
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        spLab.adapter = adapter
-                        spLab.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    view: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    if (position != 0) getLab = listlab[position - 1]
-                                    setLab = getLab.id
-                                    Log.d("Response", "Laboratorium: " + setLab)
-                                }
-
-                                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                                }
-
-                            }
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                    Log.d("RESPONSE", "ERROR: " + t.message)
-                }
-
-            })
-        }
-    }
-
     private fun validasi(): Boolean {
 
         binding.apply {
@@ -494,7 +453,6 @@ class FragmentHardware : Fragment() {
         super.onResume()
         setProvinsi()
         setPraktikum()
-        setLab()
     }
 
 

@@ -2,6 +2,7 @@ package com.akbar.laboratoriumapp.core.remote.network
 
 import com.akbar.laboratoriumapp.core.remote.response.ResponseAlamat
 import com.akbar.laboratoriumapp.core.remote.response.ResponseModel
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -56,8 +57,8 @@ interface ApiService {
     @GET("kat_prakt")
     fun getpraktikum(): Call<ResponseModel>
 
-    @GET("kat_reg")
-    fun getLab(): Call<ResponseModel>
+    @GET("kat_prakt/praktek")
+    fun getprak(): Call<ResponseModel>
 
     @FormUrlEncoded
     @POST("pendaftaran_hardware")
@@ -67,7 +68,6 @@ interface ApiService {
         @Field("kelamin") kelamin: String,
         @Field("agama") agama: String,
         @Field("kategori_id") kategori_id: Int? = 0,
-        @Field("kategori_lab") kategori_lab: Int? = 0,
         @Field("semester") semester: String,
         @Field("alamat") alamat: String,
         @Field("pekerjaan_ortu") pekerjaan_ortu: String,
@@ -77,6 +77,20 @@ interface ApiService {
         @Field("provinsi") provinsi: String
     ): Call<ResponseModel>
 
+    @Multipart
+    @POST("pendaftaran_hardware/upload_foto/{nim}")
+    fun uploadFoto(
+        @Path("nim") nim: String,
+        @Part image: MultipartBody.Part
+    ):Call<ResponseModel>
+
+    @Multipart
+    @POST("pendaftaran_hardware/upload_transaksi/{nim}")
+    fun uploadTransaksi(
+        @Path("nim") nim: String,
+        @Part img_transaksi: MultipartBody.Part
+    ):Call<ResponseModel>
+
     @FormUrlEncoded
     @POST("pendaftaran_software")
     fun createPendaftaranSoftware(
@@ -85,7 +99,6 @@ interface ApiService {
         @Field("kelamin") kelamin: String,
         @Field("agama") agama: String,
         @Field("kategori_id") kategori_id: Int? = 0,
-        @Field("kategori_lab") kategori_lab: Int? = 0,
         @Field("semester") semester: String,
         @Field("alamat") alamat: String,
         @Field("pekerjaan_ortu") pekerjaan_ortu: String,
@@ -94,6 +107,20 @@ interface ApiService {
         @Field("nama_ortu") nama_ortu: String,
         @Field("provinsi") provinsi: String
     ): Call<ResponseModel>
+
+    @Multipart
+    @POST("pendaftaran_software/upload_foto/{nim}")
+    fun uploadFotoSoft(
+        @Path("nim") nim: String,
+        @Part image: MultipartBody.Part
+    ):Call<ResponseModel>
+
+    @Multipart
+    @POST("pendaftaran_software/upload_transaksi/{nim}")
+    fun uploadTransaksiSoft(
+        @Path("nim") nim: String,
+        @Part img_transaksi: MultipartBody.Part
+    ):Call<ResponseModel>
 
     @FormUrlEncoded
     @POST("login/email_user")

@@ -37,14 +37,12 @@ class FragmentSoftware : Fragment() {
     private var getProv = Alamat()
     private var getKota = Alamat()
     private var getPraktikum = Praktikum()
-    private var getLab = Lab()
     var setprovinsi = ""
     var setkota = ""
     var setKelamin = ""
     var setAgama = ""
     var setSemester = ""
     var setPraktikum: Int? = 0
-    var setLab: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,7 +84,6 @@ class FragmentSoftware : Fragment() {
                 setKelamin,
                 setAgama,
                 setPraktikum,
-                setLab,
                 setSemester,
                 edAlamat.text.toString(),
                 edNamaortu.text.toString(),
@@ -105,6 +102,7 @@ class FragmentSoftware : Fragment() {
                             progreButton.visibility = View.GONE
                             tvKirim.visibility = View.VISIBLE
                             showSuccess("Data berhasil dikirim!")
+                            pushAcitivty(UploadGambarSoftwareActivity::class.java)
                         } else {
                             progreButton.visibility = View.GONE
                             tvKirim.visibility = View.VISIBLE
@@ -342,7 +340,7 @@ class FragmentSoftware : Fragment() {
     private fun setPraktikum() {
         binding.apply {
             progresBar2.visibility = View.VISIBLE
-            ApiConfig.instanceRetrofit.getpraktikum().enqueue(object :
+            ApiConfig.instanceRetrofit.getprak().enqueue(object :
                 Callback<ResponseModel> {
                 override fun onResponse(
                     call: Call<ResponseModel>,
@@ -377,65 +375,8 @@ class FragmentSoftware : Fragment() {
                                 ) {
                                     if (position != 0) getPraktikum = listpraktikum[position - 1]
                                     setPraktikum = getPraktikum.id
-                                    Log.d("Response", "Praktikum: " + setPraktikum)
+                                    Log.d("Response", "Praktikum: $setPraktikum")
 
-                                }
-
-                                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                                }
-
-                            }
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                    Log.d("RESPONSE", "ERROR: " + t.message)
-                }
-
-            })
-        }
-    }
-
-    private fun setLab() {
-        binding.apply {
-            progresBar2.visibility = View.VISIBLE
-            ApiConfig.instanceRetrofit.getLab().enqueue(object :
-                Callback<ResponseModel> {
-                override fun onResponse(
-                    call: Call<ResponseModel>,
-                    response: Response<ResponseModel>
-                ) {
-                    if (response.isSuccessful) {
-                        progresBar2.visibility = View.GONE
-
-                        val res = response.body()!!
-
-                        val arrayString = ArrayList<String>()
-                        val listlab = res.kategori_register
-                        arrayString.add("Pilih Laboratorium")
-                        for (lab in listlab) {
-                            divLab.visibility = View.VISIBLE
-                            arrayString.add(lab.kategori)
-                        }
-
-                        val adapter = ArrayAdapter<Any>(
-                            requireActivity(), R.layout.item_spinner, arrayString.toTypedArray()
-                        )
-
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        spLab.adapter = adapter
-                        spLab.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    view: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    if (position != 0) getLab = listlab[position - 1]
-                                    setLab = getLab.id
-                                    Log.d("Response", "Laboratorium: " + setLab)
                                 }
 
                                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -495,7 +436,6 @@ class FragmentSoftware : Fragment() {
         super.onResume()
         setProvinsi()
         setPraktikum()
-        setLab()
     }
 
 

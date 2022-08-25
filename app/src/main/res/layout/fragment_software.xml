@@ -60,20 +60,6 @@
             android:layout_marginTop="@dimen/_10sdp" />
 
         <LinearLayout
-            android:id="@+id/div_lab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-                android:id="@+id/sp_lab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/div_praktikum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

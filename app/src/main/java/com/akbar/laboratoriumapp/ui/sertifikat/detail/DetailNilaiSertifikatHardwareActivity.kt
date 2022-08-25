@@ -28,7 +28,7 @@ class DetailNilaiSertifikatHardwareActivity : AppCompatActivity() {
         }
         binding.btnDownload.setOnClickListener {
             val uri: Uri =
-                Uri.parse("http://192.168.12.35/mylab/sertifikat/cetak_sertifikat_hardware/" + data.nim)
+                Uri.parse("http://192.168.1.106/mylab/sertifikat/cetak_sertifikat_hardware/" + data.nim)
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         }

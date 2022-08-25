@@ -77,13 +77,26 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tv_semester"
+                android:id="@+id/tv_asisten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Jadwal Praktikum"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:id="@+id/tv_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_asisten"
+                android:ellipsize="end"
+                android:ems="3"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="2"
+                android:text="Jadwal Praktikum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
         </RelativeLayout>
     </LinearLayout>
 

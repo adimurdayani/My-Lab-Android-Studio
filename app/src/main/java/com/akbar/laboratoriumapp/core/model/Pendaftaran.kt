@@ -16,4 +16,7 @@ class Pendaftaran {
     var pekerjaan_ortu: String = ""
     var provinsi: String = ""
     var semester: String = ""
+    var image: String = ""
+    var img_transaksi: String = ""
+    var id: Int = 0
 }

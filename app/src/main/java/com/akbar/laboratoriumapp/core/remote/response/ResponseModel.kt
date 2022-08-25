@@ -16,4 +16,5 @@ class ResponseModel {
     val data_register = User()
     var data = User()
     var pendaftaran = Pendaftaran()
+    var foto = Pendaftaran()
 }

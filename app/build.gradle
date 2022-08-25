@@ -71,4 +71,9 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.4.0"
     implementation "com.github.Shashank02051997:FancyAlertDialog-Android:0.2"
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Image picker
+    implementation 'com.github.Drjacky:ImagePicker:2.1.11'
+    //    library image
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

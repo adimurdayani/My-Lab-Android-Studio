@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.akbar.laboratoriumapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,13 +20,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LaboratoriumApp"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.profil.eksport.EksportActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:ignore="UnusedAttribute">
+        <activity android:name=".ui.pendaftaran.software.UploadBuktiTransaksiSoftActivity"></activity>
+        <activity android:name=".ui.pendaftaran.hardware.UploadBuktiTransaksiActivity" />
+        <activity android:name=".ui.pendaftaran.software.UploadGambarSoftwareActivity" />
+        <activity android:name=".ui.pendaftaran.hardware.UploadGambarActivity" />
+        <activity android:name=".ui.profil.eksport.EksportActivity" />
         <activity android:name=".ui.profil.nilai.detail.DetailNilaiProfileActivity" />
         <activity android:name=".ui.profil.nilai.ProfileNilaiActivity" />
         <activity android:name=".ui.sertifikat.detail.DetailNilaiSertifikatHardwareActivity" />
         <activity android:name=".ui.sertifikat.detail.DetailNilaiSertifikatSoftwareActivity" />
-        <activity android:name=".ui.sertifikat.DetailActivity" />
         <activity android:name=".ui.sertifikat.SertifikatActivity" />
         <activity android:name=".ui.profil.detail.DetailNilaiActivity" />
         <activity android:name=".ui.informasi.InformasiActivity" />
@@ -33,8 +43,6 @@
         <activity android:name=".ui.profil.detail.DetailProfilActivity" />
         <activity android:name=".ui.pendaftaran.PendaftaranActivity" />
         <activity android:name=".ui.profil.edit.EditProfilActivity" />
-        <activity android:name=".ui.mahasiswa.software.SoftwareActivity" />
-        <activity android:name=".ui.mahasiswa.hardware.HardwareActivity" />
         <activity android:name=".ui.mahasiswa.MahasiswaActivity" />
         <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".HomeActivity" />
